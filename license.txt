@@ -1,0 +1,78 @@
+License information for all data files
+
+
+Scripts under GNU GPL v3:                           Author/Origin
+-------------------------                           ------------------------
+**.lua                                              
+    scripts/multi_events.lua                        Christopho
+    (all others)                                    Llamazing
+
+
+Data files under CC0:                               Author/Origin
+---------------------                               -------------
+fonts/8_bit.png                                     Christopho, adapted from: http://opengameart.org/content/a-package-of-8-bit-fonts-for-grafx2-and-linux
+sprites/entities/candle.png                         Llamazing
+    source image: candles_with_eyes.png             http://opengameart.org/content/candles-oil-lamp-and-eye-with-varied-stands
+    source image: misc_scenery.png                  http://opengameart.org/content/misc-dark-fantasy-scenery-sprites
+sprites/masks/lamp_*.png                            Llamazing
+sprites/menus/flag_us.png                           Llamazing
+
+
+Data files under CC BY-SA 3.0:                      Author/Origin
+------------------------------                      ------------------------
+fonts/minecraftia.png                               Andrew Tyler: http://www.andrewtyler.net
+
+
+Data files under SIL OPEN FONT LICENSE:             Author/Origin
+---------------------------------------             -------------
+fonts/librefranklin*.ttf                            http://www.impallari.com/
+
+
+Files copyright Nintendo:
+-------------------------
+sprites/npc/portraits/player.png
+
+
+Files copyright Ambrosia Software, inc.             (from Cythera)
+---------------------------------------
+sounds/dialog_close.ogg
+sounds/dialog_open.ogg
+sounds/dice_roll.ogg
+sounds/error.ogg
+sounds/look.ogg
+sounds/mouse_press.ogg
+sounds/mouse_release.ogg
+sounds/mouse_use.ogg
+sounds/talk.ogg
+sounds/use.ogg
+sounds/write_log.ogg
+sprites/menus/bubble_left.png
+sprites/menus/bubble_right.png
+sprites/menus/button_disabled.png
+sprites/menus/button_enabled.png
+sprites/menus/button_pressed.png
+sprites/menus/dialog_frame.png
+sprites/menus/message_frame.png
+sprites/menus/highlight.png
+sprites/menus/label_frame.png
+sprites/menus/log_button_pressed.png
+sprites/menus/log_button.png
+sprites/menus/map_frame.png
+sprites/menus/obj_button_set.png
+sprites/menus/obj_button.png
+sprites/menus/panel_topbar.png
+sprites/menus/radiobutton_disabled.png
+sprites/menus/radiobutton_enabled.png
+sprites/menus/radiobutton_pressed.png
+sprites/menus/radiobutton_set.png
+sprites/menus/scrollbar_arrows.png
+sprites/menus/scrollbar_thumb.png
+sprites/menus/scrollbar.png
+sprites/menus/slider_bar.png
+sprites/menus/slider_box.png
+sprites/menus/text_bg.png
+sprites/menus/text_border.png
+sprites/menus/text_box.png
+sprites/npc/portraits/crito.png
+sprites/npc/portraits/demodocus.png
+sprites/npc/portraits/neoptolemus.png

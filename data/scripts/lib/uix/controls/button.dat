@@ -1,0 +1,188 @@
+--[[ text_label.dat		1/24/2017
+	   __   __   __   __  _____   _____________  _______
+	  / /  / /  /  | /  |/  /  | /__   /_  _/  |/ / ___/
+	 / /__/ /__/ & |/ , ,  / & | ,:',:'_/ // /|  / /, /
+	/____/____/_/|_/_/|/|_/_/|_|_____/____/_/ |_/____/
+	
+	This data file describes the styles associated with the button control
+]]
+
+--// Properties for each button style
+	--type (string): behavior of button ("push" or "toggle")
+	--is_text (boolean, default false): true if the button has a text label
+	--is_resize (boolean, default true): true if the source image should be resized to fit width/height by tiling
+	--horizontal_alignment (string, default "center"): determines horizontal positioning of button image and text
+		--possible values: "left", "center", "right"
+	--vertical_alignment (string, default "middle"): determines vertical positioning of button image and text
+		--possible values: "top", "middle", "bottom"
+	
+	--img_width (number): width of region to use for image in pixels (applies to all images below)
+	--img_height (number): height of region to use for image in pixels (applies to all images below)
+	--border (number): number of pixels from edge to define regions of image for tiling (applies to all images below)
+	
+	--img (sol.surface): image to use for button (unpressed, unset, enabled)
+	--img_x (number): x coordinate defining region of image
+	--img_y (number): y coordinate defining region of image
+	
+	--TODO this is now img_pressed; needs update
+	--img_sel (sol.surface): image to use for button when pressed
+	--img_sel_x (number): x coordinate defining region of image
+	--img_sel_y (number): y coordinate defining region of image
+
+	
+	--img_on (sol.surface): image to use for button when set (toggle buttons only)
+	--img_on_x (number): x coordinate defining region of image
+	--img_on_y (number): y coordinate defining region of image
+	
+	--img_disabled (sol.surface): image to use for button when disabled (greyed-out)
+	--img_disabled_x (number): x coordinate defining region of image
+	--img_disabled_y (number): y coordinate defining region of image
+	
+--The following properties are only used if is_text is true:
+	--font (string): name of the font to use for button text
+	--font_size (number): size of the font in pixels
+	--font_color (table): table of 3 RGB color values (0-255) defining the font color (outline fonts only)
+	--rendering_mode (string): "solid" (faster) or "antialiasing" (smooths edges) (outline fonts only)
+	--margin_x (number, default 0): number of pixels to keep the text away from the right/left edges of the button
+	--margin_y (number, default 0): number of pixels to keep the text away from the top/bottom edges of the button
+local styles = {
+	textbutton = {
+		type = "push",
+		img = {
+			path = "menus/button_enabled.png",
+			border = 4,
+		},
+		img_pressed = {
+			path = "menus/button_pressed.png",
+			border = 4,
+		},
+		img_disabled = {
+			path = "menus/button_disabled.png",
+			border = 4,
+		},
+		is_resize = true,
+		is_text = true,
+		font = "librefranklin-bold",
+		font_size = 14,
+		rendering_mode = "antialiasing",
+		margin_x = 8,
+		margin_y = 4,
+	},
+	togglebutton = { --14x14
+		type = "toggle",
+		img = "menus/obj_button.png",
+		img_set = "menus/obj_button_set.png",
+		is_resize = false,
+		is_text = true,
+		font = "minecraftia",
+		font_size = 7,
+		rendering_mode = "solid",
+		horizontal_alignment = "left",
+		margin_x = 18, --4 px horz offset from image
+		margin_y = 1, --text height of 12 px
+	},
+	radiobutton = { --14x14
+		type = "toggle",
+		img = "menus/radiobutton_enabled.png",
+		img_pressed = "menus/radiobutton_pressed.png",
+		img_set = "menus/radiobutton_set.png",
+		img_disabled = "menus/radiobutton_disabled.png",
+		is_resize = false,
+		is_text = true,
+		font = "minecraftia",
+		font_scale = 7,
+		rendering_mode = "solid",
+		horizontal_alignment = "left",
+		margin_x = 18, --4 px horz offset from image
+		margin_y = 1, --text height of 12 px
+	},
+	logbutton = { --24x24
+		type = "push",
+		img = "menus/log_button.png",
+		img_pressed = "menus/log_button_pressed.png",
+		is_resize = false,
+	},
+	scrollbuttonup = {
+		type = "push",
+		img = {
+			path = "menus/scrollbar_arrows.png",
+			x = 0,
+			y = 0,
+			width = 16,
+			height = 16,
+		},
+		img_pressed = {
+			path = "menus/scrollbar_arrows.png",
+			x = 16,
+			y = 0,
+			width = 16,
+			height = 16,
+		},
+		is_resize = false,
+	},
+	scrollbuttondown = {
+		type = "push",
+		img = {
+			path = "menus/scrollbar_arrows.png",
+			x = 0,
+			y = 16,
+			width = 16,
+			height = 16,
+		},
+		img_pressed = {
+			path = "menus/scrollbar_arrows.png",
+			x = 16,
+			y = 16,
+			width = 16,
+			height = 16,
+		},
+		is_resize = false,
+	},
+	keyboardbutton = {
+		type = "push",
+		img = {
+			path = "hud/keyboard_button.png",
+			x = 0,
+			y = 0,
+			width = 26,
+			height = 32,
+			border = 12,
+			blend_mode = "multiply",
+		},
+		img_pressed = {
+			path = "hud/keyboard_button.png",
+			x = 0,
+			y = 32,
+			width = 26,
+			height = 32,
+			border = 12,
+			blend_mode = "multiply",
+		},
+		img_disabled = {
+			path = "hud/keyboard_button.png",
+			x = 26,
+			y = 32,
+			width = 26,
+			height = 32,
+			border = 12,
+			blend_mode = "multiply",
+		},
+		img_overlay = {
+			path = "hud/keyboard_button.png",
+			x = 26,
+			y = 0,
+			width = 26,
+			height = 32,
+			border = 12,
+		},
+		is_resize = true,
+		is_text = true,
+		font = "librefranklin-bold",
+		font_size = 14,
+		rendering_mode = "antialiasing", 
+		margin_x = 5,
+		margin_y = 5,
+	},
+}
+
+return styles

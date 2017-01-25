@@ -1,0 +1,57 @@
+--[[ slider.dat		1/24/2017
+	   __   __   __   __  _____   _____________  _______
+	  / /  / /  /  | /  |/  /  | /__   /_  _/  |/ / ___/
+	 / /__/ /__/ & |/ , ,  / & | ,:',:'_/ // /|  / /, /
+	/____/____/_/|_/_/|/|_/_/|_|_____/____/_/ |_/____/
+	
+	This data file describes the styles associated with the slider control
+]]
+
+--// Info for each slider style --TODO
+	--img (sol.surface):
+	--img_sel (sol.surface):
+	--border (number): number of pixels from edge to reach repeating part
+	--margin_x (number): number of pixels to keep text away from left/right edge
+	--margin_y (number): number of pixels to keep text away from top/bottom edge
+	--is_text (boolean, default true): Text overlaid on button if true
+local styles = {
+	verticalbar = {
+		direction = "vertical",
+		img_bar = "menus/scrollbar.png",
+		img_handle = "menus/scrollbar_thumb.png",
+		width_bar = 16,
+		--height_bar: varies by instance
+		width_handle = 16,
+		height_handle = 16,
+		min = 0,
+		max = 1,
+		increment = 0, --all values between permitted
+		is_text = false,
+		is_resize_bar = true,
+		is_resize_handle = true,
+		border_bar = 3,
+		border_handle = 5,
+	},
+	numberslider = {
+		direction = "horizontal",
+		img_bar = "hud/slider.png",
+		img_handle = "menus/slider_box.png",
+		height_bar = 16,
+		height_handle = 16,
+		is_text = true,
+		is_resize_bar = true,
+		is_resize_handle = true,
+		border_bar = 4,
+		border_handle = 3,
+		margin_x = 10,
+		margin_y = 4, --8 px for text
+		font = "minecraftia",
+		font_size = 7,
+		font_color = {0, 0, 0}, --black
+		rendering_mode = "antialiasing",
+		horizontal_alignment = "center",
+		vertical_alignment = "bottom",
+	},
+}
+
+return styles

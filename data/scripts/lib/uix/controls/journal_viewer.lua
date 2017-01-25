@@ -1,0 +1,359 @@
+--[[ journal_viewer.lua
+	version 1.0
+	1/24/2017
+	GNU General Public License Version 3
+	author: Llamazing
+	
+	   __   __   __   __  _____   _____________  _______
+	  / /  / /  /  | /  |/  /  | /__   /_  _/  |/ / ___/
+	 / /__/ /__/ & |/ , ,  / & | ,:',:'_/ // /|  / /, /
+	/____/____/_/|_/_/|/|_/_/|_|_____/____/_/ |_/____/
+	
+	This script creates a scrollable text log that grows bigger as new lines are added. It
+	does not have a maximum number of lines specified.
+	
+	If a scrollable view is desired, then the control must be linked with a slider control
+	using the link_slider() function.
+]]
+
+local log_viewer = {}
+
+--[[ Properties for create():
+	num_lines (number, default 6): how many lines of text are visible
+	line_width (number, default 250): width of line of text in pixels
+	line_height (number, default 16): height of line of text in pixels
+	horz_margin (number, default 0): number of pixels for gap on left and right sides where text stops
+	font (string): font id to use for text
+	font_size (number, default 11): size of font to use
+	font_color (table, default black): array of 4 RGBA values 0-255
+	rendering_mode (string, default "solid"): "solid" or "antialiasing"
+	blend_mode (string, default "none"): "none", "blend", "add", or "multiply"
+	bg_color ((table, default clear): array of 4 RGBA values 0-255
+]]
+
+local integers = { --list of properties that are a number; value is the minimum allowed
+	num_lines=1, line_width=1, line_height=1, horz_margin=0, font_size=1
+}
+local enforce_types = { --these properties must have the type given as a value
+	font_color="table", rendering_mode="string", blend_mode="string", bg_color="table",
+}
+function log_viewer.create(properties)
+	assert(type(properties)=="table", "Bad argument #1 to 'create' (table expected, got "..type(properties)..")")
+	
+	--// Coerce optional properties to valid values
+	
+	--convert properties values to positive integers
+	local val
+	for key,min in pairs(integers) do
+		val = tonumber(properties[key])
+		if val then properties[key] = math.max(math.floor(val), min) end
+	end
+	
+	--any optional properties of wrong type make omitted instead
+	for property,data_type in pairs(enforce_types) do
+		if type(properties[property]) ~= data_type then
+			properties[property] = nil
+		end
+	end
+	
+	--// Variables associated with the new instance
+	
+	local log = {} --table to return
+	local linked_slider
+	
+	--settings
+	local num_lines = properties.num_lines or 6
+	local line_width = properties.line_width or 250
+	local line_height = properties.line_height or 16
+	local horz_margin = properties.horz_margin or 0
+	local text_width = line_width - horz_margin*2
+	local font = properties.font
+	local font_size = properties.font_size or 11
+	local font_color = properties.font_color or {0, 0, 0}
+	local rendering_mode = properties.rendering_mode or "solid"
+	local blend_mode = properties.blend_mode or "none"
+	local bg_color = properties.bg_color
+	local prompt = properties.prompt or ""
+	
+	--content
+	local buffer = {} --array of strings for each line
+	local display_index = 1 --index of line at top of view
+	local needs_refresh = true --true if text has changed but surface has not been redrawn
+	local needs_slider_update = true
+	
+	local is_visible = properties.is_visible~=false
+	
+	--drawable content
+	local surface = sol.surface.create(line_width, line_height*num_lines)
+	surface:set_blend_mode(blend_mode)
+	local line_text_surface = sol.text_surface.create{
+		vertical_alignment = "top",
+		horizontal_alignment = "left",
+		font = font,
+		font_size = font_size,
+		color = font_color,
+		rendering_mode = rendering_mode,
+	}
+	
+	
+	function log:get_index() return display_index end
+	function log:get_num_visible_lines() return num_lines end
+	function log:get_record_length() return #buffer end
+	
+	
+	--// Returns length and width of visible portion of log
+	function log:get_size()
+		local width = line_width
+		local height = line_height*num_lines
+		
+		return width, height
+	end
+	
+	
+	--// Returns true if control is visible, else returns false
+	function log:get_visible() return is_visible end
+	--// Sets visibility of control
+		--arg1 visible (boolean, default true): true for control to be visible, false for hidden
+	function log:set_visible(visible) is_visible = visible~=false end --refresh not necessary
+	
+	
+	function log:link_slider(new_slider) linked_slider = new_slider end
+	
+	
+	--// Returns text at specified line (string, each line separated by newline character)
+		--omit the line number to return the entire text
+	function log:get_text(n)
+		local num = tonumber(n)
+		assert(num or not n, "Bad argument #1 to 'get_text' (number or nil expected, got "..type(n)..")")
+		
+		if num then --get single line of text
+			num = math.floor(num)
+			assert(num>=1 and num<=#buffer, "Bad argument #1 to 'get_text' (number out of range: 1 to "..max_lines..")")
+						
+			return buffer[num] or ""
+		else --get all text
+			local text = {}
+			
+			local buffer_index
+			for _,line in ipairs(buffer) do
+				table.insert(text, line)
+			end
+			
+			return table.concat(text, '\n')
+		end
+	end
+	
+	
+	--// Resets all text to empty strings and flags surfaces as needing to be redrawn
+	function log:clear()
+		buffer = {}
+		display_index = 1
+		
+		needs_refresh = true
+		needs_slider_update = true
+	end
+	
+	
+	--// Adds one line of text (string); text already pre-formatted and verified to fit width
+	local function add_line(text)
+		table.insert(buffer, text) --set text
+		
+		--keep view at bottom if at bottom when adding new line
+		if display_index + num_lines == #buffer then display_index = display_index + 1 end
+		
+		needs_refresh = true
+		needs_slider_update = true
+	end
+	
+	
+	--// Appends given text (string) to bottom of viewer
+	function log:new_entry(text)
+		assert(type(text)~=nil, "Bad argument #1 to 'new_entry' (string expected, got nil)")
+		
+		--reformat text
+		text = tostring(text)
+		local text_len = text:len()
+		text = text:gsub("\r\n", "\n"):gsub("\r", "\n") --convert carriage return character(s) to new line character(s)
+		text = text..'\n' --last newline character is ignored
+		
+		--set-up with initial values
+		local line_it = text:gmatch"([^\n]*)\n"
+		local current_line = ""
+		local current_width = 0
+		local scratch_surface = sol.text_surface.create{ --to check text widths
+			font = font,
+			font_size = font_size,
+			text = prompt
+		}
+		
+		--locals for for loop
+		local word_id
+		local new_width
+		
+		--write each line of text to buffer; overflow text gets written to the next line
+		for line in line_it do
+			word_it = line:gmatch"(%s*)(%S+)"
+			
+			for space,word in word_it do
+				--find width of new word
+				scratch_surface:set_text(space..word)
+				new_width,h = scratch_surface:get_size()
+				
+				if current_width + new_width <= text_width then --new word fits on current line
+					current_line = current_line..space..word --append to current line, including leading space(s)
+					current_width = current_width + new_width
+				else --doesn't fit on current line; begin writing to new line
+					add_line(current_line) --write current line to buffer
+					
+					current_line = word --start new line with current word; don't include leading space(s)
+					scratch_surface:set_text(word)
+					current_width = scratch_surface:get_size()
+				end
+				
+			end
+			
+			--write remaining text for this line to buffer and reset for next line
+			add_line(current_line)
+			current_line = ""
+			current_width = 0
+			--don't need to set needs_refresh flag since it gets set by add_line()
+		end
+	end
+	
+	
+	--// Scroll log viewer by n lines
+		--arg1 (number): number of lines to scroll; positive moves up, negative moves down
+		--ret1 (number): percentage (value between 0 and 1) where 0 is at the very top and 1 is at the very bottom
+	function log:scroll_line(n)
+		n = tonumber(n)
+		assert(n, "Bad argument #1 to 'scroll_line' (number expected)")
+		
+		n = math.floor(n) --only scroll in increments of one whole line
+		local start_index = display_index --keep track of starting point, and if it doesn't change then don't redraw
+		local max_index = #buffer - num_lines + 1
+		
+		display_index = display_index - n
+		
+		--force display_index to be within valid bounds
+		if display_index<1 then
+			display_index = 1
+		elseif display_index > max_index then
+			display_index =  max_index
+		end
+		
+		if start_index~=display_index then --view moved
+			needs_refresh = true
+			needs_slider_update = true
+		end
+		
+		--calculate percentage of where view window is over whole buffer (0 = index of 1, 1 = max_index)
+		return display_index, (display_index - 1)/max_index
+	end
+	
+	
+	--// Scroll log viewer by n pages (or n*num_lines lines)
+		--arg1 (number): number of lines to scroll; positive moves up, negative moves down
+		--ret1 (number): percentage (value between 0 and 1) where 0 is at the very top and 1 is at the very bottom
+	function log:scroll_page(n)
+		n = tonumber(n)
+		assert(n, "Bad argument #1 to 'scroll_page' (number expected)")
+		
+		return self:scroll_line(n*num_lines)
+	end
+	
+	
+	--// Scroll log viewer so that line n is at top of view
+		--arg1 (number): line number of top visible line (lower numbered lines are higher)
+		--ret1 (number): percentage (value between 0 and 1) where 0 is at the very top and 1 is at the very bottom
+	function log:view_line(n)
+		n = tonumber(n)
+		assert(n, "Bad argument #1 to 'view_line' (number expected)")
+		
+		local start_index = display_index --keep track of starting point, and if it doesn't change then don't redraw
+		local max_index = #buffer - num_lines + 1
+		
+		n = math.floor(n) --scroll in whole line increments
+		n = math.min(math.max(n, 1), max_index) --force to valid bounds
+		
+		display_index = n
+		
+		if start_index~=display_index then needs_refresh=true end --view moved
+		--don't update slider
+		
+		--calculate percentage of where view window is over whole buffer (0 = index of 1, 1 = max_index)
+		return (display_index - 1)/(max_index - 1)
+	end
+	
+	
+	--// Scroll log viewer to percentage of scroll bar (0 is top, 1 is bottom)
+	function log:scroll_percent(percent)
+		percent = tonumber(percent)
+		assert(percent, "Bad argument #1 to 'scroll_percent' (number expected)")
+		
+		local max_index = #buffer - num_lines + 1
+		local new_index = math.floor(percent * max_index + 1.5) --round to nearest index
+		
+		return self:view_line(new_index)
+	end
+	
+	
+	function log:refresh()
+		surface:clear()
+					
+		if bg_color then surface:fill_color(bg_color) end --keep transparent background if bg_color not specified
+		
+		--redraw visible lines
+		local i --buffer index of line to view
+		for n=0,num_lines-1 do
+			i = display_index + n
+			
+			line_text_surface:set_text(buffer[i])
+			line_text_surface:draw(surface, horz_margin, n * line_height)
+		end
+		
+		--disable scrollbar if not enough lines to scroll
+		if #buffer <= num_lines then
+			linked_slider:set_enabled(false)
+		else
+			linked_slider:set_enabled(true)
+			
+			if needs_slider_update and linked_slider and linked_slider.set_value then
+				local max_index = #buffer - num_lines + 1
+				linked_slider:set_value((display_index-1)/(max_index-1))
+			end
+		end
+		
+		needs_refresh = false
+		needs_slider_update = false
+	end
+	
+	
+	--// Draws the log surface on dst_surface
+		--arg1 (surface, optional): surface to draw the log surface on; if dst_surface is nil then the log surface is just rendered and returned
+		--arg2 (number, optional): X coordinate of where to draw the log surface
+		--arg3 (number, optional): Y coordinate of where to draw the log surface
+		--ret1 (surface): log surface; only re-renders if text or viewing position has changed since last call of :draw()
+	function log:draw(dst_surface, x, y)
+		if needs_refresh then self:refresh() end
+		if is_visible then surface:draw(dst_surface, x, y) end
+	end
+	
+	return log
+end
+
+return log_viewer
+
+
+--[[ Copyright 2016 Llamazing
+  [[ 
+  [[ This program is free software: you can redistribute it and/or modify it under the
+  [[ terms of the GNU General Public License as published by the Free Software Foundation,
+  [[ either version 3 of the License, or (at your option) any later version.
+  [[ 
+  [[ It is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+  [[ without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+  [[ PURPOSE.  See the GNU General Public License for more details.
+  [[ 
+  [[ You should have received a copy of the GNU General Public License along with this
+  [[ program.  If not, see <http://www.gnu.org/licenses/>.
+  ]]

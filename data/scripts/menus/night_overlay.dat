@@ -1,0 +1,230 @@
+--[[ night_overlay.dat		12/04/2016
+	   __   __   __   __  _____   _____________  _______
+	  / /  / /  /  | /  |/  /  | /__   /_  _/  |/ / ___/
+	 / /__/ /__/ & |/ , ,  / & | ,:',:'_/ // /|  / /, /
+	/____/____/_/|_/_/|/|_/_/|_|_____/____/_/ |_/____/
+	
+	This data file contains info for creating night overlays to darken the map camera view
+	at night. Parameters include when the overlay is active, the color to use, the sprites
+	to use for light sources, and how to transition from one overlay to the next.
+]]
+
+--Table keys are entity prefixes that should have a light source drawn on the night overlay
+--Each entry is a table with the following keys as possible parameters:
+	--active (string, default "night"): defines when the light source should be active
+		--"always" - light source drawn if the night overlay is active (i.e. not 255, 255, 255)
+		--"night" - only draw light source at night when lights are set to active
+	--save_val (string): only draw the light source if the given savegame variable is set
+		--TODO use savegame expression to support multiple variables and specific values
+	--movement (boolean, default false): Whether the position of the light source is fixed
+		--true - the position of the light source will be recalculated every frame
+	--is_ambient (boolean, default false): The ambient light increases proportionally to number of active light sources with this parameter set
+		--true - this light source will contribute to increasing the ambient light value
+	--origin (string, default "origin"): Where to center the light source on the entity --TODO NYI
+		--"center" - puts the light source at the center of the entity (use for dynamic tiles)
+		--"origin" - puts the light source at the sprite origin (use for other entities)
+local light_sources = {
+	["brazier_on"] = {
+		active = "night",
+		is_ambient = true,
+		origin = "center",
+	},
+	["lamp"] = {
+		active = "always",
+		is_ambient = true,
+		origin = "center",
+	},
+	["candle"] = {
+		active = "always",
+		origin = "origin",
+	},
+	["hero"] = {
+		save_val = "possession_candle",
+		active = "night",
+		movement = true,
+		origin = "origin",
+	},
+}
+
+--RGB colors referenced by overlays entries (internal use only)
+local colors = {
+	dark_moonlight = {30, 60, 150},
+	dim_moonlight = {80, 110, 185},
+	dark_twilight = {160, 120, 80},
+	dim_twilight = {210, 170, 120},
+	dim = {150, 150, 150},
+	dark = {50, 50, 50},
+	bright = false, --don't use overlay
+}
+
+--Each overlays entry is the name of a style to define the night overlay parameters.
+--Every map should define map.lighting as one of these styles to use that night overlay for the map.
+--If map.lighting is not defined then the overlays.default style will be used.
+--Parameters of each entry are as follows:
+	--ambient_boost (boolean, default false): if true then the ambient light gets brighter
+		--proportionally to the number of active lights present on the map
+	--color (table): 3 RGB color values (0-255) to use for the night overlay color (darkens using multiply blend mode)
+		--if nil or false then no overlay is used
+	--transition (string, default "none"): transition to use when changing colors
+		--"smooth": linear transition from previous color to next color
+		--"none": no color transition (instantly changes from one color to next color)
+	--lights (string): which image to use for the light mask ("bright", "dim" or false for no lights)
+	--lights_transition (string, default "none"): transition to use when changing lights
+		--"fade": previous lights fade out while next lights fade in
+		--"none": abrupt transition from previous lights to next lights
+--Each entry can have multiple overlay segments defined in a sorted array by the parameter "start_time"
+	--start_time (string, HH:MM): time to begin the segment, which will be active until the time of the next segment
+		--HH:MM is hours / minutes, which is a value from "00:00" to "23:59"
+local overlays = {
+	outside = {
+		ambient_boost = false,
+		{
+			start_time = "00:00",
+			color = colors.dark_moonlight,
+			transition = "none",
+			lights = "bright",
+			music = "night",
+		},
+		{
+			start_time = "04:00",
+			color = colors.dark_moonlight,
+			transition = "smooth",
+			lights = "bright",
+			lights_transition = "fade",
+			music = "night",
+		},
+		{
+			start_time = "05:00",
+			color = colors.dim_moonlight,
+			transition = "smooth",
+			lights = "dim",
+			music = "night",
+		},
+		{
+			start_time = "05:30",
+			color = colors.dark_twilight,
+			transition = "smooth",
+			lights = false,
+			music = "night",
+		},
+		{
+			start_time = "06:00",
+			color = colors.dim_twilight,
+			transition = "smooth",
+			lights = false,
+			music = "day",
+		},
+		{
+			start_time = "07:00",
+			color = false, --don't use overlay
+			transition = "none",
+			lights = false,
+			music = "day",
+		},
+		{
+			start_time = "17:00",
+			color = false, --don't use overlay
+			transition = "smooth",
+			lights = false,
+			music = "day",
+		},
+		{
+			start_time = "18:00",
+			color = colors.dim_twilight,
+			transition = "smooth",
+			lights = false,
+			music = "night",
+		},
+		{
+			start_time = "18:30",
+			color = colors.dark_twilight,
+			transition = "smooth",
+			lights = false,
+			music = "night",
+		},
+		{
+			start_time = "19:00",
+			color = colors.dim_moonlight,
+			transition = "smooth",
+			lights = "dim",
+			lights_transition = "fade",
+			music = "night",
+		},
+		{
+			start_time = "20:00",
+			color = colors.dark_moonlight,
+			transition = "none",
+			lights = "bright",
+			music = "night",
+		},
+	},
+	inside = {
+		ambient_boost = true,
+		{
+			start_time = "00:00",
+			color = colors.dark,
+			transition = "none",
+			lights = "bright",
+			music = "night",
+		},
+		{
+			start_time = "03:00",
+			color = colors.dark,
+			transition = "smooth",
+			lights = "bright",
+			lights_transition = "fade",
+			music = "night",
+		},
+		{
+			start_time = "05:00",
+			color = colors.dim,
+			transition = "smooth",
+			lights = "dim",
+			lights_transition = "none",
+			music = "night",
+		},
+		{
+			start_time = "06:00",
+			color = false, --don't use overlay
+			transition = "none",
+			lights = false,
+			music = "day",
+		},
+		{
+			start_time = "18:00",
+			color = false, --don't use overlay
+			transition = "smooth",
+			lights = false,
+			music = "night",
+		},
+		{
+			start_time = "19:00",
+			color = colors.dim,
+			transition = "smooth",
+			lights = "dim",
+			lights_transition = "fade",
+			music = "night",
+		},
+		{
+			start_time = "20:00",
+			color = colors.dark,
+			transition = "none",
+			lights = "bright",
+			music = "night",
+		},
+	},
+	dim = {
+		ambient_boost = true,
+		color = colors.dim,
+		lights = "dim",
+	},
+	dark = {
+		ambient_boost = true,
+		color = colors.dark,
+		lights = "bright",
+	},
+	none=false, --no overlay used
+}
+overlays.default = overlays.none --use "none" style by default
+
+return {overlays, light_sources}

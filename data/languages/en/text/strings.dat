@@ -1,0 +1,291 @@
+--strings.dat	Language: English
+
+--------------------
+-- Language Stuff --
+--------------------
+
+text{ key = "lang.article", value = "a" } --article to use preceding non-vowel
+text{ key = "lang.article_vowel", value = "an" } --article to use preceding vowel
+text{ key = "lang.vowels", value = "aeiouAEIOU" } --characters considered vowels
+text{ --all possible characters to calculate text height
+	key = "lang.all",
+	value = [[qwertyuiop[]\asdfghjkl;'zxcvbnm,./`1234567890-=QWERTYUIOP{}|ASDFGHJKL:"ZXCVBNM<>?~!@#$%^&*()_+]],
+}
+
+
+--------------
+-- HUD text --
+--------------
+
+text{ key = "hud.label.objectives", value = "Objectives" } --title of objectives log
+text{ key = "hud.label.journal", value = "Journal" } --title of journal log
+
+
+-----------
+-- Menus --
+-----------
+
+--sleep dialog buttons labels
+text{ key = "menu.cancel_button", value = "Cancel" } --label of cancel dialog button
+text{ key = "menu.sleep.dawn_button", value = "Until Dawn" } --label of until dawn button
+text{ key = "menu.sleep.morning_button", value = "Until Morning" } --label of until morning button
+text{ key = "menu.sleep.noon_button", value = "Until Noon" } --label of until noon button
+text{ key = "menu.sleep.sunset_button", value = "Until Sunset" } --label of until sunset button
+text{ key = "menu.sleep.midnight_button", value = "Until Midnight" } --label of until midnight button
+text{ key = "menu.sleep.hours_button", value = "Hours" } --label of hours button
+
+--keyboard layout names
+text{ key = "keyboard.layout.latin", value = "Latin" }
+text{ key = "keyboard.layout.cyrillic", value = "Cyrillic" }
+
+--special button names and labels
+text{ key = "keyboard.backspace", value = "BACKSPACE" }
+text{ key = "keyboard.backspace.label", value = "DEL" }
+text{ key = "keyboard.clear", value = "CLEAR" }
+text{ key = "keyboard.clear.label", value = "CLR" }
+text{ key = "keyboard.reset", value = "RESET" }
+text{ key = "keyboard.reset.label", value = "RESET" }
+text{ key = "keyboard.caps", value = "CAPSLOCK" }
+text{ key = "keyboard.caps.label", value = "CAPS" }
+text{ key = "keyboard.enter", value = "ENTER" }
+text{ key = "keyboard.enter.label", value = "ENTER" }
+text{ key = "keyboard.combine", value = "COMBINE" }
+text{ key = "keyboard.combine.label", value = "COMBINE" }
+text{ key = "keyboard.shift", value = "SHIFT" }
+text{ key = "keyboard.shift.label", value = "SHIFT" }
+--text{ key = "keyboard.space", value = "SPACE" } --unused
+text{ key = "keyboard.space.label", value = " " }
+text{ key = "keyboard.language", value = "CHANGE LAYOUT" }
+text{ key = "keyboard.language.label", value = "LANG" }
+text{ key = "keyboard.alt", value = "ALT" }
+text{ key = "keyboard.alt.label", value = "ALT" }
+
+--accents
+text{ key = "keyboard.acute", value = "ACUTE" }
+text{ key = "keyboard.breve", value = "BREVE" }
+text{ key = "keyboard.caron", value = "CARON" }
+text{ key = "keyboard.cedilla", value = "CEDILLA" }
+text{ key = "keyboard.circumflex", value = "CIRCUMFLEX" }
+text{ key = "keyboard.circumflex_below", value = "CIRCUMFLEX BELOW" }
+text{ key = "keyboard.diaeresis", value = "DIAERESIS" }
+text{ key = "keyboard.dot_above", value = "DOT ABOVE" }
+text{ key = "keyboard.dot_below", value = "DOT BELOW" }
+text{ key = "keyboard.double_grave", value = "DOULBE GRAVE" }
+text{ key = "keyboard.double_acute", value = "DOUBLE ACUTE" }
+text{ key = "keyboard.grave", value = "GRAVE" }
+text{ key = "keyboard.hook", value = "HOOK" }
+text{ key = "keyboard.inverted_breve", value = "INVERTED BREVE" }
+text{ key = "keyboard.macron", value = "MACRON" }
+text{ key = "keyboard.macron_below", value = "MACRON BELOW" }
+text{ key = "keyboard.ogonek", value = "OGONEK" }
+text{ key = "keyboard.ring_above", value = "RING ABOVE" }
+text{ key = "keyboard.stroke", value = "STROKE" }
+text{ key = "keyboard.tilde", value = "TILDE" }
+
+
+--------------
+-- Keywords --
+--------------
+
+text{ key = "map.city.cademia", value = "Cademia" }
+text{ key = "map.city.catamarca", value = "Catamarca" }
+text{ key = "map.city.odemia", value = "Odemia" }
+
+text{ key = "map.landmark.sitia", value = "Sitia" } --river
+
+text{ key = "map.location.cademia.inn", value = "Inn" } --building (run by Crito)
+
+text{ key = "player.default_name", value = "Player" }
+text{ key = "NPC.name.Demodocus", value = "Demodocus" }
+text{ key = "NPC.name.Crito", value = "Crito" }
+text{ key = "NPC.name.Neoptolemus", value = "Neoptolemus" }
+text{ key = "NPC.name.Neoptolemus_stranger", value = "$A beggar" } --identification before learning Neoptolemus' name
+
+text{ key = "skill.name.haggling", value = "Haggling" }
+text{ key = "skill.name.persuasion", value = "Persuasion" }
+
+text{ key = "topic.LIST.name", value = "Name" }
+text{ key = "topic.LIST.job", value = "Job" }
+text{ key = "topic.LIST.where", value = "Where is..." }
+text{ key = "topic.LIST.bye", value = "Bye" }
+
+--choices in dialogs
+text{ key = "choice.yes", value = "Yes" }
+text{ key = "choice.yes.hotkey", value = "y" } --pressing this character chooses the "yes" list entry
+text{ key = "choice.no", value = "No" }
+text{ key = "choice.no.hotkey", value = "n" } --pressing this character chooses the "no" list entry
+
+
+----------------
+-- Directions --
+----------------
+
+--phrases for "where is..." dialog
+text{ key = "directions.north", value = " paces to the north" }
+text{ key = "directions.south", value = " paces to the south" }
+text{ key = "directions.east", value = " paces to the east" }
+text{ key = "directions.west", value = " paces to the west" }
+text{ key = "directions.and", value = " and " } --joins two of above phrases
+
+
+----------------
+-- Objectives --
+----------------
+
+-- ****** Usage ******
+-- objective.<objective_id>.<keyword>
+-- where keyword can be:
+--	 .title: The title gets displayed in the objectives list
+--	 .desc:	The desc gets printed to the console when the player clicks on an incomplete objective in the objectives list
+--		"$v" can be used to display the objective progress (e.g. "($v of $v)" becomes "(3 of 4)" )
+--	 .done:	The done gets printed to the console when the player clicks on a completed objective in the objectives list
+--		"$s" will be substituted for the title of the objective
+--		Note that if objective.<objective_id>.done is not defined then objective.DONE will be used instead
+
+text{ key = "objective.DONE", value = "You have already completed the objective %s" }
+--%s substitutes the title of the objective
+
+text{ key = "objective.learn_neoptolemus_name.title", value = "Learn Neoptolemus' name" }
+text{ key = "objective.learn_neoptolemus_name.desc", value = "Learn the name of Neoptolemus." }
+text{ key = "objective.learn_neoptolemus_name.done", value = "You learned Neoptolemus' name." }
+
+text{ key = "objective.learn_persuasion.title", value = "Learn the skill Persuasion" }
+text{ key = "objective.learn_persuasion.desc", value = "Look for someone who will train you in the skill \"Persuasion\". It may come in handy." }
+
+text{ key = "objective.obtain_bottle.title", value = "Obtain a bottle" }
+text{ key = "objective.obtain_bottle.desc", value = "Be on the lookout for a bottle. No hero's inventory is complete without one." }
+
+
+-----------------
+-- Bubble Text --
+-----------------
+
+--// Phrases to display in a text bubble above an NPC's head
+
+text{ key = "bubble.out_of_bed", value = "Hey! Out of my bed!" } --said by the owner of a bed when they kick the player out of it
+
+
+----------------
+-- Item Names --
+----------------
+
+text{ key = "item.bed", value = "$A bed" } --for when the player interacts with a bed
+
+--food items
+text{ key = "food.cheese", value = "Cheese (8 oboloi)" } --cheese sold by Crito
+text{ key = "food.bread", value = "Bread (5 oboloi)" } --bread sold by Crito
+text{ key = "food.fish", value = "Fish (5 oboloi)" } --fish sold by Crito
+text{ key = "food.wine", value = "Wine (10 oboloi)" } --wine sold by Crito
+
+
+------------------
+-- Console Text --
+------------------
+
+text{ key = "console.initial", value = "Welcome!\nPlease enjoy your stay..." } --Initial text when starting new or loading saved game
+text{ key = "console.look_npc", value = "Look - you see $A $s." } --When player clicks on an NPC; $s substitutes the NPC's name
+text{ key = "console.interact_npc", value = "Talk to $A $s." } --When player interacts with an NPC; $s substitutes the NPC's name
+text{ key = "console.sleeping", value = "They are asleep." } --When player tries to interact with a sleeping NPC (in bed)
+text{ key = "console.look_item", value = "Look - you see $a $s." } --When player clicks on an object; $s substitutes the object's name
+text{ key = "console.interact_item", value = "Use $s." } --When player interacts with object. $s substitutes the object's name
+text{ key = "console.search_nothing", value = "Searching reveals nothing." } --second line after console.look_item if nothing is found
+text{ key = "console.bed_kicked", value = "You get kicked out of bed by its owner" } --While the player is sleeping in a bed and the owner shows up
+text{ key = "console.bed_occupied", value = "Somebody is already asleep there!" } --When the player tries to sleep in a bed occupied by an NPC
+text{ key = "console.bed_unpaid", value = "You need to pay the innkeeper first." } --When the player tries to use an inn bed without paying first
+text{ key = "console.bed_unrest", value = "You toss and turn, but never get a good rest." } --When player sleeps in an NPC's bed
+text{ key = "console.bed_inn", value = "You sleep soundly." } --When player sleeps in an inn bed
+
+text{ key = "item.candle.obtained", value = "You found a candle. It will illuminate your surroundings." }
+
+
+-------------------------------
+-- Dialog substitution terms --
+-------------------------------
+
+text{ key = "hero_male", value = "hero" } --used in conversation to refer to the player as a hero if male
+text{ key = "hero_female", value = "heroine" } --used in conversation to refer to the player as a hero if female
+text{ key = "obol_single", value = "obol" } --used in conversation when referring to only one obol
+text{ key = "obol_plural", value = "oboloi" } --used in conversation when referring to more than one obol
+
+
+--------------------------------------------------
+-- Queries from player during dialogs with NPCs --
+--------------------------------------------------
+
+-- ****** Usage ******
+-- Every word beginning with @ from the dialogs.dat needs a matching entry here
+-- Only the string defined by value should be edited
+-- All characters must be lower case; does not have to match case from dialogs.dat
+-- Characters beyond the first 5 are ignored, minimum of 2 characters required
+-- Words with more characters take priority over words with fewer characters
+-- 	 (e.g. if "peach" and "pea" are listed, the query "peaches" is interpreted as peach, not pea)
+-- Please ensure there are no duplicate entries for the same NPC
+--   (e.g. "interact" and "interested" are duplicates because the first 5 letters are the same)
+
+-- ****** Note ******
+-- The same term may appear under different NPCs. This is okay because in some languages
+-- it may be desired to translate that word differently for each NPC, so they are separated
+-- out to make this possible.
+
+-- these are terms that should be consistent among all NPCs so only defined once
+text{ key = "topic.COMMON.name", value = "name" }
+text{ key = "topic.COMMON.job", value = "job" }
+text{ key = "topic.COMMON.join", value = "join" }
+text{ key = "topic.COMMON.train", value = "train" }
+text{ key = "topic.COMMON.where", value = "where" }
+text{ key = "topic.COMMON.bye", value = "bye" }
+text{ key = "topic.COMMON.odemia", value = "odemi" } --odemia (city)
+text{ key = "topic.COMMON.cademia", value = "cadem" } --cademia (city)
+text{ key = "topic.COMMON.sitia", value = "sitia" } --(river)
+text{ key = "topic.COMMON.catamarca", value = "catam" } --catamarca (city)
+text{ key = "topic.COMMON.oboloi", value = "obol" } --oboloi (Cythera currency)
+text{ key = "topic.COMMON.neoptolemus", value = "neopt" } --neoptolemus (character name)
+text{ key = "topic.COMMON.demodocus", value = "demod" } --demodocus (character name)
+text{ key = "topic.COMMON.alaric", value = "alari" } --alaric (character name)
+text{ key = "topic.COMMON.music", value = "music" }
+text{ key = "topic.COMMON.haggling", value = "haggl" } --haggling (skill)
+text{ key = "topic.COMMON.persuasion", value = "persu" } --persuasion (skill)
+
+-- terms used by Demodocus
+text{ key = "topic.Demodocus.bard", value = "bard" }
+text{ key = "topic.Demodocus.strange", value = "stran" } --strange
+text{ key = "topic.Demodocus.plague", value = "plagu" } --plague
+text{ key = "topic.Demodocus.rumors", value = "rumor" } --rumors
+text{ key = "topic.Demodocus.song", value = "song" }
+text{ key = "topic.Demodocus.entertain", value = "enter" } --entertain
+text{ key = "topic.Demodocus.land", value = "land" }
+text{ key = "topic.Demodocus.more", value = "more" }
+text{ key = "topic.Demodocus.crime", value = "crime" }
+text{ key = "topic.Demodocus.bandits", value = "bandi" }
+text{ key = "topic.Demodocus.organized", value = "organ" } --organized
+text{ key = "topic.Demodocus.inns", value = "inn" }
+text{ key = "topic.Demodocus.traveling", value = "trave" } --traveling
+
+--terms used by Neoptolemus
+text{ key = "topic.Neoptolemus.respect", value = "respe" }
+text{ key = "topic.Neoptolemus.elders", value = "elder" } --elders
+text{ key = "topic.Neoptolemus.born", value = "born" }
+text{ key = "topic.Neoptolemus.days", value = "days" }
+text{ key = "topic.Neoptolemus.differently", value = "diffe" } --differently
+text{ key = "topic.Neoptolemus.merchant", value = "merch" }
+text{ key = "topic.Neoptolemus.interested", value = "inter" }
+text{ key = "topic.Neoptolemus.teach", value = "teach" }
+text{ key = "topic.Neoptolemus.client", value = "clien" } --client
+text{ key = "topic.Neoptolemus.cloth", value = "cloth" }
+text{ key = "topic.Neoptolemus.grapes", value = "grape" } --grapes
+text{ key = "topic.Neoptolemus.fashion", value = "fashi" } --fashion
+text{ key = "topic.Neoptolemus.belt", value = "belt" }
+text{ key = "topic.Neoptolemus.cheap", value = "cheap" }
+text{ key = "topic.Neoptolemus.cape", value = "cape" }
+text{ key = "topic.Neoptolemus.fancy", value = "fancy" }
+text{ key = "topic.Neoptolemus.bees", value = "bee" } --bees
+
+--terms used by Crito
+text{ key = "topic.Crito.inn", value = "inn" }
+text{ key = "topic.Crito.crito", value = "crito" }
+text{ key = "topic.Crito.room", value = "room" }
+text{ key = "topic.Crito.food", value = "food" }
+text{ key = "topic.Crito.meal", value = "meal" }
+text{ key = "topic.Crito.drink", value = "drink" }
+text{ key = "topic.Crito.dice", value = "dice" }
+text{ key = "topic.Crito.wine", value = "wine" }

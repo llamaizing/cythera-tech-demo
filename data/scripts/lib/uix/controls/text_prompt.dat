@@ -1,0 +1,26 @@
+--[[ text_prompt.dat		1/24/2017
+	   __   __   __   __  _____   _____________  _______
+	  / /  / /  /  | /  |/  /  | /__   /_  _/  |/ / ___/
+	 / /__/ /__/ & |/ , ,  / & | ,:',:'_/ // /|  / /, /
+	/____/____/_/|_/_/|/|_/_/|_|_____/____/_/ |_/____/
+	
+	This data file describes the styles associated with the text_prompt control
+]]
+
+--TODO add more styles
+local styles = {
+	simpleprompt = { --white box with 1 px black outline
+		fill_color = {255, 255, 255}, --white
+		outline_color = {0, 0, 0}, --black
+		cursor_color = {100, 100, 100}, --grey
+		horizontal_alignment = "left",
+		vertical_alignment = "middle",
+		font = "librefranklin-bold",
+		font_size = 14,
+		font_color = {0, 0, 0}, --black
+		rendering_mode = "antialiasing",
+	},
+	none = {},
+}
+
+return styles

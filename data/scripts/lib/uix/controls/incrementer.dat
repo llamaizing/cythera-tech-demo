@@ -1,0 +1,24 @@
+--[[ incrementer.dat		12/12/2016
+	   __   __   __   __  _____   _____________  _______
+	  / /  / /  /  | /  |/  /  | /__   /_  _/  |/ / ___/
+	 / /__/ /__/ & |/ , ,  / & | ,:',:'_/ // /|  / /, /
+	/____/____/_/|_/_/|/|_/_/|_|_____/____/_/ |_/____/
+	
+	This data file describes the styles associated with the incmrementer control
+]]
+
+
+--// Info for each scrollbar style
+	--text_label (uix.text_label)
+	--button1 (uix.button)
+	--button2 (uix.button)
+local styles = {
+	textbox = {
+		text_label = "textbox",
+		button_up = "scrollbuttonup",
+		button_down = "scrollbuttondown",
+		button_width = 16,
+	},
+}
+
+return styles

@@ -1,0 +1,118 @@
+--[[ frame.dat		1/24/2016
+	   __   __   __   __  _____   _____________  _______
+	  / /  / /  /  | /  |/  /  | /__   /_  _/  |/ / ___/
+	 / /__/ /__/ & |/ , ,  / & | ,:',:'_/ // /|  / /, /
+	/____/____/_/|_/_/|/|_/_/|_|_____/____/_/ |_/____/
+	
+	This data file describes the styles associated with the frame control
+]]
+
+local styles = {
+	simpleframe = {
+		{
+			img = "menus/text_border.png",
+			border = 3,
+			is_resize = true,
+			is_hollow = true,
+		},
+	},
+	dialogframe = {
+		{ --bg
+			color = {0, 0, 191, 127}, --50% blue fill
+		},
+		{ --fg
+			img = "menus/dialog_frame.png",
+			border = 8,
+			is_resize = true,
+			is_hollow = true,
+		},
+	},
+	textframe = {
+		{ --bg
+			img = "menus/text_bg.png",
+			is_resize = false,
+		},
+		{ --fg
+			img = "menus/text_border.png",
+			border = 3,
+			is_resize = true,
+			is_hollow = true,
+		},
+	},
+	questiondialogframe = {
+		{
+			img = "menus/text_bg.png",
+			is_resize = false,
+		},
+		{
+			img = "menus/message_frame.png",
+			border = 16,
+			is_resize = true,
+			is_hollow = true,
+		},
+	},
+	labelframe = {
+		{
+			img = "menus/label_frame.png",
+			border = 4,
+			is_resize = true,
+			is_hollow = false,
+		},
+	},
+	mapframe = {
+		{
+			img = "menus/map_frame.png",
+			border = 16,
+			is_resize = true,
+			is_hollow = true,
+		},
+	},
+	titlebarframe = {
+		{
+			img = "menus/panel_topbar.png",
+			border = 4,
+			is_resize = true,
+			is_hollow = false,
+		},
+	},
+	highlightframe_light = { --upper-left corner
+		{
+			img = "menus/highlight.png",
+			img_x = 0,
+			img_width = 9,
+			border = 3,
+			is_resize = true,
+			is_hollow = true,
+		},
+	},
+	highlightframe_corners = { --corners UR & LL
+		{
+			img = "menus/highlight.png",
+			img_x = 9,
+			img_width = 9,
+			border = 3,
+			is_resize = true,
+			is_hollow = true,
+		},
+	},
+	highlightframe_dark = { --lower-right corner
+		{
+			img = "menus/highlight.png",
+			img_x = 18,
+			img_width = 9,
+			border = 3,
+			is_resize = true,
+			is_hollow = false,
+		},
+	},
+	keyboardhighlightframe = {
+		{
+			img = "hud/keyboard_highlight.png",
+			border = 8,
+			is_resize = true,
+			is_hollow = true,
+		},
+	},
+}
+
+return styles

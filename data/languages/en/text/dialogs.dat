@@ -1,0 +1,1334 @@
+-------------------
+-- Sleep Dialogs --
+-------------------
+
+-- Title of sleep menu when using a bed
+dialog{
+	id = "sleep.use_bed",
+	dlg_type = "sleep",
+	text = [[
+Sleep how long?
+]]
+}
+
+
+----------------------
+-- Question Dialogs --
+----------------------
+
+-- Ask the player to save game
+dialog{
+	id = "question.save_game",
+	dlg_type = "question",
+	text = [[
+Do you want to save your game?
+]],
+	option1 = "Yes", --saves and resumes game
+	option2 = "Cancel", --resumes game without saving
+	option3 = "New Game", --deletes all save data and starts new game
+	default_enter = 1,
+	default_esc = 2,
+}
+-----------------------
+
+-- Objectives complete dialog
+dialog{
+	id = "question.objectives_complete",
+	dlg_type = "question",
+	text = [[
+All quest objectives are complete.
+]],
+	option1 = "Resume", --resumes game
+	option2 = nil,
+	option3 = "New Game", --deletes all save data and starts new game
+	default_enter = 1,
+	default_esc = 1,
+}
+
+--------------------------
+-- Conversation Dialogs --
+--------------------------
+
+-- Neoptolemus greeting (before learning his name)
+dialog{
+	id = "Neoptolemus.greeting_stranger",
+	text = [[
+#You see an old man, looking cranky and mean.
+
+Get off my yard!
+]]
+}
+-----------------------
+
+-- Neoptolemus greeting (after learning his name)
+dialog{
+	id = "Neoptolemus.greeting",
+	text = [[
+#You see an old man, looking cranky and mean.
+
+Get off my yard!
+
+Oh, it's you.
+]]
+}
+-----------------------
+
+-- Neoptolemus greeting (while eating at table)
+dialog{
+	id = "Neoptolemus.greeting_eating",
+	text = [[
+#You see an old man, looking cranky and mean
+
+What do you want—can't you see I'm busy eating?
+
+Get off my yard!
+]]
+}
+-----------------------
+
+-- Neoptolemus response to unknown query
+dialog{
+	id = "Neoptolemus.unknown",
+	text = [[
+What are you yammering about?
+]]
+}
+-----------------------
+
+-- Neoptolemus response interrupting his story
+dialog{
+	id = "Neoptolemus.story_interrupt",
+	text = [[
+Why are you interrupting my story?
+]]
+}
+-----------------------
+
+-- Neoptolemus response to most queries before learning his name
+dialog{
+	id = "Neoptolemus.go_away",
+	text = [[
+Get off my yard!
+]]
+}
+-----------------------
+
+-- Neoptolemus response to "job" or "name" before learning his name
+dialog{
+	id = "Neoptolemus.no_business",
+	text = [[
+None of your business!
+]]
+}
+-----------------------
+
+-- Neoptolemus response to "job" after learning his name
+dialog{
+	id = "Neoptolemus.job",
+	text = [[
+In my younger days, I used to be a @merchant.
+]]
+}
+-----------------------
+
+-- Neoptolemus response to "name" after learning his name
+dialog{
+	id = "Neoptolemus.name",
+	text = [[
+Neoptolemus — and show a little @respect to your elders!
+]]
+}
+-----------------------
+
+-- Neoptolemus response to saying his name
+dialog{
+	id = "Neoptolemus.neoptolemus",
+	text = [[
+Who told you my name!
+]]
+}
+-----------------------
+
+-- Neoptolemus response to saying Alaric told you his name
+dialog{
+	id = "Neoptolemus.neoptolemus_alaric",
+	text = [[
+Yeah, right, like I believe you.
+]]
+}
+-----------------------
+
+-- Neoptolemus response to saying Demodocus told you his name
+dialog{
+	id = "Neoptolemus.neoptolemus_demodocus",
+	text = [[
+Hm, maybe I was wrong about you.
+
+Yes, I'm Neoptolemus.
+]]
+}
+-----------------------
+
+-- Neoptolemus response to saying anyone else told you his name
+dialog{
+	id = "Neoptolemus.neoptolemus_other",
+	text = [[
+Never heard of them.
+]]
+}
+-----------------------
+
+-- Neoptolemus response to "respect" before learning his name (while eating)
+dialog{
+	id = "Neoptolemus.respect_stranger",
+	text = [[
+Hah — what do you know about respect! We haven't even been introduced!
+]]
+}
+-----------------------
+
+-- Neoptolemus response to "respect" before learning his name (while outside)
+dialog{
+	id = "Neoptolemus.no_respect",
+	text = [[
+You've got no respect!
+]]
+}
+-----------------------
+
+-- Neoptolemus response to "respect" after learning his name
+dialog{
+	id = "Neoptolemus.respect",
+	text = [[
+You come barging in here, demanding I answer your foolish questions — no respect.
+
+In my @days, we did things @differently.
+]]
+}
+-----------------------
+
+-- Neoptolemus response to "elders" before learning his name
+dialog{
+	id = "Neoptolemus.elders_stranger",
+	text = [[
+I use to be a successful merchant before you were even born!
+]]
+}
+-----------------------
+
+-- Neoptolemus response to "days" or "differently" before listening to his story
+dialog{
+	id = "Neoptolemus.days_before_story",
+	text = [[
+Well, I remember one time, I needed to go to @Odemia, to buy some @cloth for a @client.
+]]
+}
+-----------------------
+
+-- Neoptolemus response to "days" or "differently" after listening to his story
+dialog{
+	id = "Neoptolemus.days_after_story",
+	text = [[
+Yup, things were different back then...
+]]
+}
+-----------------------
+
+-- Neoptolemus response to "merchant" before learning his name
+dialog{
+	id = "Neoptolemus.merchant_stranger",
+	text = [[
+Bah, you're not interested.
+]]
+}
+-----------------------
+
+-- Neoptolemus response to "merchant" after learning his name
+dialog{
+	id = "Neoptolemus.merchant",
+	text = [[
+Yep, I remember back when I was younger, I was a prosperous merchant.
+
+And we knew how to make money back then — @haggling and @persuasion is a lost art now a days.
+]]
+}
+-----------------------
+
+-- Neoptolemus response to "haggling" before listening to his story
+dialog{
+	id = "Neoptolemus.haggling_before_story",
+	text = [[
+Young punks, don't know nothing about respect — I could teach you to haggle, but you wouldn't be @interested.
+]]
+}
+-----------------------
+
+-- Neoptolemus response to "haggling" after listening to his story
+dialog{
+	id = "Neoptolemus.haggling_after_story",
+	text = [[
+I used to be a merchant, you know. I could @teach you a few things about haggling.
+]]
+}
+-----------------------
+
+-- Neoptolemus response to "persuasion" before listening to his story
+dialog{
+	id = "Neoptolemus.persuasion_before_story",
+	text = [[
+Impudent kids — I could teach you persuasion, but you wouldn't be @interested.
+]]
+}
+-----------------------
+
+-- Neoptolemus response to "persuasion" after listening to his story
+dialog{
+	id = "Neoptolemus.persuasion_after_story",
+	text = [[
+I used to be a merchant, you know. I could @teach you a few things about persuasion.
+]]
+}
+-----------------------
+-- Neoptolemus response to "interested" before listening to his story
+dialog{
+	id = "Neoptolemus.interested_before_story",
+	text = [[
+If you would show some @respect, maybe I'd be more willing to chat.
+]]
+}
+-----------------------
+
+-- Neoptolemus response to "interested" after listening to his story
+dialog{
+	id = "Neoptolemus.interested_after_story",
+	text = [[
+You've been nice to an old man, sitting and listening to his stories...
+]]
+}
+-----------------------
+
+-- Neoptolemus response to "train" or "teach" before learning his name (only while outside)
+dialog{
+	id = "Neoptolemus.train_before_name",
+	text = [[
+You impudent punk — never showing any @respect to your @elders
+]]
+}
+-----------------------
+
+-- Neoptolemus response to "train" or "teach" before listening to story (only after learning name if outside)
+	--or outside after learning his name (before listening to story)
+dialog{
+	id = "Neoptolemus.train_before_story",
+	text = [[
+I wouldn't teach you how to tie your sandals...
+]]
+}
+-----------------------
+
+-- Neoptolemus response to "train" or "teach" after listening to his story
+dialog{
+	id = "Neoptolemus.train_after_story",
+	text = [[
+What would you like me to teach you?
+]]
+}
+-----------------------
+
+-- Neoptolemus response to "odemia" while listening to his story
+dialog{
+	id = "Neoptolemus.odemia_story",
+	text = [[
+Odemia was always known for making @cloth — I guess there wasn't much else to do there.
+
+So, anyway, I was heading up to Odemia, but first I had to get some @grapes.
+]]
+}
+-----------------------
+
+-- Neoptolemus response to "odemia" at the wrong time during his story
+dialog{
+	id = "Neoptolemus.odemia_interrupt",
+	text = [[
+You sure are dense — I already said I was going to Odemia. Now you made me forget my story...
+]]
+}
+-----------------------
+
+-- Neoptolemus response to "client" during his story
+dialog{
+	id = "Neoptolemus.client_story",
+	text = [[
+Who the client was isn't important — stop interrupting my stories, and show some respect!
+]]
+}
+-----------------------
+
+-- Neoptolemus response to "cloth" during his story
+dialog{
+	id = "Neoptolemus.cloth_story",
+	text = [[
+Yeah, cloth — what, you're dense or something? Show some respect here...
+]]
+}
+-----------------------
+
+-- Neoptolemus response to "grapes" during his story
+dialog{
+	id = "Neoptolemus.grapes_story",
+	text = [[
+You see, it was the @fashion at the time to wear a bunch of grapes tied to your @belt.
+]]
+}
+-----------------------
+
+-- Neoptolemus response to "grapes" after listening to his story
+dialog{
+	id = "Neoptolemus.grapes_after_story",
+	text = [[
+Hm, grapes, that reminds me of a story...
+]]
+}
+-----------------------
+
+-- Neoptolemus response to "fashion" during his story
+dialog{
+	id = "Neoptolemus.fashion_story",
+	text = [[
+What do I know about fashion — I'm an old man. Stop asking me these foolish questions.
+]]
+}
+-----------------------
+
+-- Neoptolemus response to "belt" during his story (first time)
+dialog{
+	id = "Neoptolemus.belt_story_first",
+	text = [[
+Of course, everybody wore a @belt back then — they were @cheap too. Nowadays, can't even get a @cape for less than 15 @oboloi.
+]]
+}
+-----------------------
+
+-- Neoptolemus response to "belt" during his story (second time)
+dialog{
+	id = "Neoptolemus.belt_story_second",
+	text = [[
+That's right — we used to tie grapes to our belts. It was the fashion, you know.
+
+Hm, maybe I was wrong about you — you've been nice to let an old man tell you his stories.
+
+Shown respect and everything. Maybe I can @teach you a few things.
+]]
+}
+-----------------------
+-- Neoptolemus response to "cheap" during his story
+dialog{
+	id = "Neoptolemus.cheap_story",
+	text = [[
+You calling me cheap? You little whippersnappers — show some respect to your elders!
+]]
+}
+-----------------------
+
+-- Neoptolemus response to "cape" during his story
+dialog{
+	id = "Neoptolemus.cape_story",
+	text = [[
+I wasn't talking about capes, now, where was I? Stop trying to confuse me — I'm an old man!
+]]
+}
+-----------------------
+
+-- Neoptolemus response to "oboloi" during his story
+dialog{
+	id = "Neoptolemus.oboloi_story",
+	text = [[
+Back then, oboloi weren't as @fancy as they are now — but they used to have pictures of @bees on them.
+]]
+}
+-----------------------
+
+-- Neoptolemus response to "fancy" during his story
+dialog{
+	id = "Neoptolemus.fancy_story",
+	text = [[
+What do you know — you're just a punk who won't even let an old man tell him a story!
+]]
+}
+-----------------------
+
+-- Neoptolemus response to "bees" during his story
+dialog{
+	id = "Neoptolemus.bees_story",
+	text = [[
+Yup, 'Grapes, Two bees' we use to say, because that was how much @grapes cost.
+]]
+}
+-----------------------
+
+-- Neoptolemus response to "bye" (ends conversation)
+dialog{
+	id = "Neoptolemus.bye",
+	text = [[
+Hurmph...
+]]
+}
+-----------------------
+
+-- Demodocus introductory greeting
+dialog{
+	id = "Demodocus.greeting_initial",
+	text = [[
+#You see a jovial man, with thinning curly hair.
+
+Ah! You must be that great $s that I've heard so much about!
+
+I am Demodocus, the Bard — pleased to meet you.
+]]
+--$s substitutes hero/heroine depending on player's gender
+--see "hero_male" and "hero_female" in strings.dat
+}
+-----------------------
+
+-- Demodocus standard greeting
+dialog{
+	id = "Demodocus.greeting",
+	text = [[
+#You see a jovial man, with thinning curly hair.
+
+Well met again, friend. Perhaps you'll tell me your story...
+]]
+}
+-----------------------
+
+-- Demodocus unknown response
+dialog{
+	id = "Demodocus.unknown",
+	text = [[
+I think I once wrote a song about that, but now it's just echoes of the past.
+]]
+}
+-----------------------
+
+-- Demodocus response to "name"
+dialog{
+	id = "Demodocus.name",
+	text = [[
+I am Demodocus — you've heard of me, perhaps.
+]]
+}
+-----------------------
+
+-- Demodocus response to "job" or "bard"
+dialog{
+	id = "Demodocus.job",
+	text = [[
+I make legends out of the follies of man, and @entertain people with ballad and fable.
+]]
+}
+-----------------------
+
+-- Demodocus response to "join"
+dialog{
+	id = "Demodocus.join",
+	text = [[
+Well, while you are bound to have some great stories to live, I've got commitments to perform.
+
+I'm sure we'll meet again, though.
+]]
+}
+-----------------------
+
+-- Demodocus response to "train"
+dialog{
+	id = "Demodocus.train",
+	text = [[
+Sorry, but training in songwriting takes years — you'll have to seek elsewhere.
+
+If there's anything in particular that you'd like to study, I might know who to ask...
+]]
+}
+-----------------------
+
+-- Demodocus response to "neoptolemus", "haggling", or "persuasion"
+dialog{
+	id = "Demodocus.neoptolemus",
+	text = [[
+Many a shopkeeper knows how to persuade his customer to part with their oboloi, but none was as good as Neoptolemus.
+
+However, he's a bit crazy now, and tells the most boring stories I've ever heard — which says quite a bit!
+]]
+}
+-----------------------
+
+-- Demodocus response to "strange"
+dialog{
+	id = "Demodocus.strange",
+	text = [[
+These are strange times we live in, that is for sure.
+]]
+}
+-----------------------
+
+-- Demodocus response to "rumors" before curing plague
+dialog{
+	id = "Demodocus.rumors_plague",
+	text = [[
+Though I've not been there recently, I heard from a friend that something is very wrong in @Catamarca.
+
+People have been getting sick, a few have even died. It may be just a rumor, but my instinct tells me a great story could start there.
+]]
+}
+-----------------------
+
+-- Demodocus response to "rumors" after curing plague
+dialog{
+	id = "Demodocus.rumors",
+	text = [[
+Rumors are everywhere, but in my experience, they are almost always false.
+]]
+}
+-----------------------
+
+-- Demodocus response to "song"
+dialog{
+	id = "Demodocus.song",
+	text = [[
+Ah, you'd like to hear a song, then... well, here we are...
+
+#Demodocus begins to sing, but the words seem to be lost to you.
+
+#Instead, your mind is filled with images of Earth and Sea, and the constant battle between those two elements.
+]]
+}
+-----------------------
+
+-- Demodocus response to "demodocus"
+dialog{
+	id = "Demodocus.demodocus",
+	text = [[
+I am Demodocus, that is true.
+]]
+}
+-----------------------
+
+-- Demodocus response to "entertain"
+dialog{
+	id = "Demodocus.entertain",
+	text = [[
+Oh, why yes, I often travel from city to city, playing at @Inns to delight the patrons, and occasionally I am honored to perform for the Land King.
+
+Of late, I come to play for the Land King more often to lift @Alaric's spirits.
+]]
+}
+-----------------------
+
+-- Demodocus response to "alaric"
+dialog{
+	id = "Demodocus.alaric",
+	text = [[
+Alas, Alaric is not well, and the @land not well with him.
+
+I do what I can to make him feel better with my arts of song, but perhaps you can do @more...
+]]
+}
+-----------------------
+
+-- Demodocus response to "land"
+dialog{
+	id = "Demodocus.land",
+	text = [[
+Cythera was once a proud land, with little @crime, and beautiful prospering villages, from the mighty @Cademia, to the quaint village of Odemia.
+]]
+}
+-----------------------
+
+-- Demodocus response to "more"
+dialog{
+	id = "Demodocus.more",
+	text = [[
+Alaric has been waning and is further drained from summoning you here.
+
+Much depends on you, hero. I hope to sing about your tale one day.
+]]
+}
+-----------------------
+
+-- Demodocus response to "crime"
+dialog{
+	id = "Demodocus.crime",
+	text = [[
+With the @bandits roaming about, there is much mischief afoot, but the honorable folk in town do not condone such stealing and pillaging.
+]]
+}
+-----------------------
+
+-- Demodocus response to "bandits"
+dialog{
+	id = "Demodocus.bandits",
+	text = [[
+Nasty sorts. Cythera used to be a peaceful land...
+
+I don't know what is behind their appearance, be it just vultures feasting on the decaying land, or a more @organized plot.
+]]
+}
+-----------------------
+
+-- Demodocus response to "organized"
+dialog{
+	id = "Demodocus.organized",
+	text = [[
+I don't know for sure, but it's certainly possible that there are unseen forces at work...
+
+...or it could just be another sort of @plague descending upon the land.
+]]
+}
+-----------------------
+
+-- Demodocus response to "plague" before curing plague
+dialog{
+	id = "Demodocus.plague_plague",
+	text = [[
+Well, there are @rumors...
+]]
+}
+-----------------------
+
+-- Demodocus response to "plague" after curing plague
+dialog{
+	id = "Demodocus.plague",
+	text = [[
+The plague in Catamarca was most odd, was it not?
+]]
+}
+-----------------------
+
+-- Demodocus response to "inns"
+dialog{
+	id = "Demodocus.inns",
+	text = [[
+The best sorts don't often frequent them, but most folks are decent enough, and idle chatter can often be quite informative.
+
+This life suits me well, despite the @traveling.
+]]
+}
+-----------------------
+
+-- Demodocus response to "traveling"
+dialog{
+	id = "Demodocus.traveling",
+	text = [[
+I spend much of my time traveling, and this advice I'll give you — travel at night only with an alert eye, and a drawn sword.
+
+There have been @bandits about, running amuck in the land as @Alaric's power to stop them has weakened.
+]]
+}
+-----------------------
+
+-- Demodocus response to "bye" (ends conversation)
+dialog{
+	id = "Demodocus.bye",
+	text = [[
+Off on some adventure? Well, sometime you'll have to tell them all to me so I can make a ballad...
+]]
+}
+-----------------------
+
+-- Crito standard greeting (intentionally left blank, needs $1 to not be totally empty)
+dialog{
+	id = "Crito.greeting",
+	text = [[
+$1
+]]
+}
+-----------------------
+
+-- Crito greeting after paying for a room but not eaten yet (prompt yes or no)
+dialog{
+	id = "Crito.greeting_meal",
+	text = [[
+Hungry for that meal I promised?
+]]
+}
+-----------------------
+
+-- Crito response to saying yes to "Crito.greeting_meal"
+-- See: "Crito.meal_yes"
+-----------------------
+
+-- Crito response to saying no to "Crito.greeting_meal"
+dialog{
+	id = "Crito.greeting_meal_no",
+	text = [[
+Don't forget!
+]]
+}
+-----------------------
+
+-- Crito unknown response
+dialog{
+	id = "Crito.unknown",
+	text = [[
+I'm afraid I can't say.
+]]
+}
+-----------------------
+
+-- Crito response to "name"
+dialog{
+	id = "Crito.name",
+	text = [[
+I'm your humble host, Crito.
+]]
+}
+-----------------------
+
+-- Crito response to "job"
+dialog{
+	id = "Crito.job",
+	text = [[
+I run this @inn.
+]]
+}
+-----------------------
+
+-- Crito response to "inn" or "crito"
+dialog{
+	id = "Crito.inn",
+	text = [[
+Yes — are you interested in a @room, a game of @dice, or perhaps some @food, or perhaps an entire @meal, or just a @drink and some conversation?
+]]
+}
+-----------------------
+
+-- Crito response to "room" (prompt yes or no)
+	--$v is the cost of the room
+dialog{
+	id = "Crito.room",
+	text = [[
+A room for the night, with one of my finest meals to boot, will run $v oboloi for the lot of you.
+
+Interested?
+]]
+}
+-----------------------
+
+-- Crito response to saying yes to "Crito.room" and player can afford cost
+dialog{
+	id = "Crito.room_yes",
+	text = [[
+Enjoy your stay. You can have your @meal either now or later.
+]]
+}
+-----------------------
+
+-- Crito response to saying yes to "Crito.room" and player cannot afford cost
+dialog{
+	id = "Crito.room_yes_broke",
+	text = [[
+Perhaps you'd better recount your change first.
+]]
+}
+-----------------------
+
+-- Crito response to saying no to "Crito.room"
+dialog{
+	id = "Crito.room_no",
+	text = [[
+Perhaps some other time.
+]]
+}
+-----------------------
+
+-- Crito response to "food" (displays a list of items to choose from)
+dialog{
+	id = "Crito.food",
+	text = [[
+What are your interests?
+]]
+}
+-----------------------
+
+-- After receiving cheese when asking Crito about "food"
+dialog{
+	id = "Crito.food_cheese",
+	text = [[
+#You receive some cheese, which you promptly eat. Delicious!
+]]
+}
+-----------------------
+
+-- After receiving bread when asking Crito about "food"
+dialog{
+	id = "Crito.food_bread",
+	text = [[
+#You receive some freshly baked bread, which you promptly eat. Delicious!
+]]
+}
+-----------------------
+
+-- After receiving fish when asking Crito about "food"
+dialog{
+	id = "Crito.food_fish",
+	text = [[
+#You receive some fish, which you promptly eat. Delicious!
+]]
+}
+-----------------------
+
+-- After requesting wine when asking Crito about "food" (player does not have the skill persuasion)
+dialog{
+	id = "Crito.food_wine",
+	text = [[
+Sorry, but I am sold of wine.
+]]
+}
+-----------------------
+
+-- After requesting wine when asking Crito about "food" (player has the skill persuasion)
+dialog{
+	id = "Crito.food_wine_persuasion",
+	text = [[
+Sorry, but I am sold of wine.
+
+$3How about just the empty bottle?
+
+$1What possible use could you have for an empty bottle?
+
+$3The bottle may be empty, but innumerable possibilities exist for its potential contents.
+
+$1I cannot argue with your logic.
+
+#You receive an empty bottle.
+]]
+}
+-----------------------
+
+-- Crito response to "food" and the player is broke
+dialog{
+	id = "Crito.food_broke",
+	text = [[
+You haven't got a single obol on you, why are you wasting my time?
+]]
+}
+-----------------------
+
+-- Crito response to "food" and the player is broke
+dialog{
+	id = "Crito.food_need_oboloi",
+	text = [[
+You don't have the oboloi!
+]]
+}
+-----------------------
+
+-- Crito response to "meal" and player has not paid for a room (prompt yes or no)
+	--$v is the cost of the meal
+dialog{
+	id = "Crito.meal",
+	text = [[
+Meals are $v oboloi a person. Interested?
+]]
+}
+-----------------------
+
+-- Crito response to saying yes to "Crito.meal" or if the player has paid in advance
+dialog{
+	id = "Crito.meal_yes",
+	text = [[
+#Crito serves you a fine meal of cheese, bread, and meat.
+
+#You eat until you are stuffed.
+]]
+}
+-----------------------
+
+-- Crito response to saying yes to "Crito.meal" when the player is broke
+dialog{
+	id = "Crito.meal_yes_broke",
+	text = [[
+Sorry, no credit.
+]]
+}
+-----------------------
+
+-- Crito response to saying no to "Crito.meal"
+dialog{
+	id = "Crito.meal_no",
+	text = [[
+You don't know what you're missing...
+]]
+}
+-----------------------
+
+-- Crito response to "drink", where $v is the cost and $s is obol/oboloi depending on $v
+dialog{
+	id = "Crito.drink",
+	text = [[
+A round of drinks is $v $s.
+
+What do you say?
+]]
+}
+-----------------------
+
+-- Crito response to saying no to "Crito.drink"
+dialog{
+	id = "Crito.drink_no",
+	text = [[
+Another time then.
+]]
+}
+-----------------------
+
+-- Crito response to saying yes to "Crito.drink" when the player cannot afford it
+dialog{
+	id = "Crito.drink_yes_broke",
+	text = [[
+You seem a bit short — sorry, but no credit.
+]]
+}
+-----------------------
+
+-- Crito possible response after buying round of drinks
+dialog{
+	id = "Crito.drink_join",
+	text = [[
+You seem to be on a difficult journey, my friend. Perhaps you should ask others to @join you in your quest.
+]]
+}
+-----------------------
+
+-- Crito response to "dice" (prompt yes or no)
+dialog{
+	id = "Crito.dice",
+	text = [[
+Do you need instructions?
+]]
+}
+-----------------------
+
+-- Crito response to saying no to "Crito.dice"
+dialog{
+	id = "Crito.dice_no",
+	text = [[
+Ah, we've got an expert here!
+]]
+}
+-----------------------
+
+-- Crito follow-up to "Crito.dice_no" if the player is broke
+dialog{
+	id = "Crito.dice_no_broke",
+	text = [[
+I'm sorry, but we don't give credit here — come back when you've got the oboloi.
+]]
+}
+-----------------------
+
+-- Crito response to saying yes to "Crito.dice" (prompt yes or no)
+dialog{
+	id = "Crito.dice_instructions",
+	text = [[
+It's very simple — we've got three dice. My two are black and your one is white. I throw out the first one, and then you throw your one die. If they match, you win 2 to 1.
+
+If they don't match, I roll my second die. If your white die is 'trapped' between my two black dice, I win. By trapped, I mean if the number on your die is between my two — this includes equalling my second die.
+
+For every point higher or lower than my highest or lowest die is, that's how much you win. For example, if I roll a 5 and a 6, then if you had rolled a 1, you'd get 4 to 1!
+
+We have a special rule — if your payback were 1 to 1, it just means we automatically play again — no need to redo your bet or anything.
+
+Sound like fun?
+]]
+}
+-----------------------
+
+-- Crito response to saying no to "Crito.dice_instructions"
+dialog{
+	id = "Crito.dice_instructions_no",
+	text = [[
+Well, perhaps another time then.
+]]
+}
+-----------------------
+
+-- Crito response to saying yes to "Crito.dice_instructions" or play again if the player is broke
+dialog{
+	id = "Crito.dice_broke",
+	text = [[
+Sorry, looks like you're broke. Better luck next time.
+]]
+}
+-----------------------
+
+-- Crito response to saying yes to "Crito.dice_instructions" (next is "Crito.play")
+dialog{
+	id = "Crito.dice_instructions_yes",
+	text = [[
+Good — let's get on with it then.
+]]
+}
+-----------------------
+
+-- Start of Crito's dice game (first $v is the number Crito rolled, and the second $v is the number the player rolled)
+	--if the numbers are equal then the player wins and "Crito.play_equal" is next
+	--otherwise next is "Crito.play2"
+dialog{
+	id = "Crito.play",
+	text = [[
+I roll a $v and you roll a $v.
+]]
+}
+-----------------------
+
+-- Crito's dice game when Crito's first roll and player's roll are equal (prompt yes or no)
+dialog{
+	id = "Crito.play_equal",
+	text = [[
+You've got a match, and so you win 2 oboloi!
+
+Play again?
+]]
+}
+-----------------------
+
+-- Crito's dice game when Crito rolls second die ($v is number of Crito's second die)
+	--Next is "Crito.play_tie" if the player wins only 1 obol
+	--Next is "Crito.play_lose" if Crito wins (Crito's dice trap player's die)
+	--Next is "Crito.play_win" if the player wins (can be 2 to 5 oboloi won)
+dialog{
+	id = "Crito.play2",
+	text = [[
+I then roll a $v.
+]]
+}
+-----------------------
+
+-- Crito's dice game when the player wins (prompt yes or no)
+	--The first $v is the number of oboloi the player won (2-5)
+	--The second $v is the player's total oboloi
+dialog{
+	id = "Crito.play_win",
+	text = [[
+Ah — a winner. You win $v oboloi, which brings you up to $v.
+
+Play again?
+]]
+}
+-----------------------
+
+-- Crito's dice game when Crito wins (prompt yes or no)
+	--$v is the player's total oboloi
+dialog{
+	id = "Crito.play_lose",
+	text = [[
+Unfortunately, that means I win. You are now down to $v.
+
+Play again?
+]]
+}
+-----------------------
+
+-- Crito's dice game when ends in a tie. Next is "Crito.play"
+dialog{
+	id = "Crito.play_tie",
+	text = [[
+That was a push, so we play again...
+]]
+}
+-----------------------
+
+-- Crito's response when the player says yes to playing again. Next is "Crito.play"
+dialog{
+	id = "Crito.play_again_yes",
+	text = [[
+All right - let's go.
+]]
+}
+-----------------------
+
+-- Crito's response when the player says no to playing again (ends dice game)
+dialog{
+	id = "Crito.play_again_no",
+	text = [[
+Very well.
+]]
+}
+-----------------------
+
+-- Crito response to "demodocus"
+dialog{
+	id = "Crito.demodocus",
+	text = [[
+He doesn't get to this area often, but we enjoy it when he stops by.
+]]
+}
+-----------------------
+
+-- Crito response to "wine"
+dialog{
+	id = "Crito.wine",
+	text = [[
+We serve both vintages from the North Shore Vineyard, as well as the Southland Vineyard.
+
+Unfortunately, our shipment from the North Shore Vineyard is running a bit late.
+]]
+}
+-----------------------
+
+-- Crito response to "bye" (ends conversation)
+dialog{
+	id = "Crito.bye",
+	text = [[
+Please come back.
+]]
+}
+-----------------------
+
+-- Generic NPC response to "music" 
+dialog{
+	id = "COMMON.music",
+	text = [[
+The best musician is certainly Demodocus, the famous <travelling,traveling> bard.
+]]
+}
+-----------------------
+
+-- Generic NPC response to "odemia"
+dialog{
+	id = "COMMON.odemia",
+	text = [[
+Odemia is a rustic town along the coast north east of @Cademia.
+]]
+}
+-----------------------
+
+-- Generic NPC response to "cademia"
+dialog{
+	id = "COMMON.cademia",
+	text = [[
+Cademia is the oldest city in Cythera, where River @Sitia flows into the sea.
+]]
+}
+-----------------------
+
+-- Generic NPC response to "sitia"
+dialog{
+	id = "COMMON.sitia",
+	text = [[
+River Sitia flows from LandKing Hall to the sea at @Cademia.
+]]
+}
+-----------------------
+
+-- Generic NPC response to "catamarca"
+dialog{
+	id = "COMMON.catamarca",
+	text = [[
+Catamarca is a resort town on a peninsula east of @Cademia.
+]]
+}
+-----------------------
+
+-- Generic NPC response to "oboloi" 
+dialog{
+	id = "COMMON.oboloi",
+	text = [[
+Getting a job is better than begging for money.
+]]
+}
+-----------------------
+
+-- Generic NPC response to "alaric" 
+dialog{
+	id = "COMMON.alaric",
+	text = [[
+Alaric is the LandKing, who rules from his stronghold at the northern end of the mountains.
+]]
+}
+-----------------------
+
+-- Generic NPC response to "demodocus" 
+dialog{
+	id = "COMMON.demodocus",
+	text = [[
+Demodocus was just playing in one of the public houses around here.
+]]
+}
+-----------------------
+
+-- After asking "Where is..."; player chooses item from list to ask for directions to
+dialog{
+	id = "WHERE_IS.title",
+	text = [[
+Directions to Where?
+]]
+}
+-----------------------
+
+-- Directions to the town of Catamarca from Cademia
+dialog{
+	id = "WHERE_IS.from_cademia.catamarca",
+	text = [[
+Catamarca lies southeast, across the Sitia and then down the coast.
+]]
+}
+-----------------------
+
+-- Directions to the town of Odemia from Cademia
+dialog{
+	id = "WHERE_IS.from_cademia.odemia",
+	text = [[
+Odemia lies up the road northeast from town.
+]]
+}
+-----------------------
+
+-- Directions to the inn in Cademia, where $s describes the relative location from the player
+dialog{
+	id = "WHERE_IS.from_cademia.inn",
+	text = [[
+Crito's inn is $s.
+]],
+	map = "cademia",
+	dest = "to_inn",
+	default = "at the northwest corner of Cademia"
+}
+-----------------------
+
+
+-- When player tries to interact with themself
+dialog{
+	id = "player.interact_self",
+	text = [[
+#Talking to yourself is a sign of instability.
+]]
+}
+-----------------------
+
+-- When player tries to train but has no XP
+dialog{
+	id = "train.no_xp",
+	text = [[
+#You need some more experience before you can train.
+]]
+}
+-----------------------
+
+-- After player learns new skill, where $s is the name of the skill
+dialog{
+	id = "train.learn",
+	text = [[
+#You now know the skill '$s'.
+]]
+}
+-----------------------
+
+-- When player tries to train in a skill already earned, where $s is the name of the skill
+dialog{
+	id = "train.already_learned",
+	text = [[
+#You already know $s.
+]]
+}
+-----------------------

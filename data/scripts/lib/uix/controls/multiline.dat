@@ -1,0 +1,32 @@
+--[[ multiline.dat		12/12/2016
+	   __   __   __   __  _____   _____________  _______
+	  / /  / /  /  | /  |/  /  | /__   /_  _/  |/ / ___/
+	 / /__/ /__/ & |/ , ,  / & | ,:',:'_/ // /|  / /, /
+	/____/____/_/|_/_/|/|_/_/|_|_____/____/_/ |_/____/
+	
+	This data file describes the styles associated with the multiline control
+]]
+
+local styles = {
+	bodytext = { --default
+		horizontal_alignment = "left",
+		vertical_alignment = "top",
+		font = "librefranklin-bold",
+		font_size = 14,
+		font_color = {255, 255, 0}, --yellow
+		hyperlink_color = {0, 191, 191}, --cyan
+		shadow_color = {0, 0, 0}, --black
+		rendering_mode = "antialiasing",
+	},
+	blacktext = {
+		horizontal_alignment = "left",
+		vertical_alignment = "top",
+		font = "librefranklin-bold",
+		font_size = 14,
+		font_color = {0, 0, 0}, --black
+		rendering_mode = "antialiasing",
+	},
+	none= {},
+}
+
+return styles

@@ -1,0 +1,68 @@
+--[[ initial_game.dat		1/24/2017
+	   __   __   __   __  _____   _____________  _______
+	  / /  / /  /  | /  |/  /  | /__   /_  _/  |/ / ___/
+	 / /__/ /__/ & |/ , ,  / & | ,:',:'_/ // /|  / /, /
+	/____/____/_/|_/_/|/|_/_/|_|_____/____/_/ |_/____/
+	
+	This file contains data describing the starting conditions when beginning a new game.
+]]
+
+--// The following parameters can be specified:
+	--language (string): The language code to use for in-game text (language codes are defined in project_db.dat)
+	--player_name (string): Name to use for the player (shown in conversation dialog)
+	--player_gender (string): "male" or "female", can affect text in conversation dialog
+	--starting_map (string): map id where player starts a new game
+	--starting_location (string): Name of destination where player starts a new game
+	--starting_time (table): Starting time for a new game. The table contains the following keys:
+		--day (positive integer): starting day
+		--hour (number): starting hour (0-23)
+		--minute (number): starting minute (0-59)
+		--ticks (number): fraction of minute (0-499)
+	--max_life (number): Player's maximum life at start (1 heart for every 4)
+	--life (number): player's starting life; cannot exceed max_life
+		--if not defined then is equal to max_life
+	--max_money (number): Maximum amount of money the player can hold
+	--money (number): player's starting amount of money
+	--values (table): savegame values to set on new game
+		--equivalent to game:set_value(key, value) for each entry in table
+	--abilities (table): ability values to set on new game
+		--equivalent to game:set_ability(key, value) for each entry in table
+local initial_game = {
+	language = "en",
+	player_gender = "male",
+	--Note: default name for player is set by strings.dat entry "player.default_name"
+	
+	starting_map = "cademia",
+	starting_location = "start",
+	
+	starting_time = {
+		day = 1,
+		hour = 8,
+		minute = 20, --2 minutes before Neoptolemus leaves in morning
+		ticks = 0,
+	},
+	
+	--[[starting_time = { --DEBUG
+		day = 1,
+		hour = 17,
+		minute = 0,
+		ticks = 0,
+	},]]
+	
+	max_life = 12,
+	life = nil, --use max_life
+	
+	max_money = 200,
+	money = 0,
+	
+	values = {
+		skill_points = 2,
+	},
+	
+	abilities = {
+		lift = 1,
+		sword = 1,
+	},
+}
+
+return initial_game

@@ -1,0 +1,7 @@
+Installation Instructions
+
+Download and unzip the ALTTP resource pack (confirmed to work with version 1.5.6)
+
+https://github.com/solarus-games/solarus-alttp-pack
+
+Then extract the contents of the Cythera Tech Demo to the same directory, overwriting any files with the same name.

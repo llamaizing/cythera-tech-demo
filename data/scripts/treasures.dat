@@ -1,0 +1,38 @@
+--[[ treasures.dat		12/23/2016
+	   __   __   __   __  _____   _____________  _______
+	  / /  / /  /  | /  |/  /  | /__   /_  _/  |/ / ___/
+	 / /__/ /__/ & |/ , ,  / & | ,:',:'_/ // /|  / /, /
+	/____/____/_/|_/_/|/|_/_/|_|_____/____/_/ |_/____/
+	
+	This data file specifies the probability distributions to use when selecting at random
+	a treasure item for chests, enemies and destructible entities.
+]]
+
+--List of the sets of probability distributions possible. Keys are the names of the set,
+--where the value is a table containing an entry (another table) corresponding to each item
+	--index1 item_name (string): name of the item (use nil for no treasure)
+	--index2 variant (number): item variant (use nil if item_name is nil)
+	--index3 weight (positive integer): chances for the item being selected, where the
+		--probability is the weight divided by the sum of all weights for this set.
+local treasure_sets = {
+	common = {
+		{false, false, 15}, --75% no treasure
+		{"rupee", 1, 4}, --20%
+		{"rupee", 2, 1}, --5%
+	},
+	uncommon = {
+		{false, false, 1}, --25% no treasure
+		{"rupee", 1, 2}, --50%
+		{"rupee", 2, 1}, --25%
+	},
+}
+
+--Links an entity (chest, enemy or destructible) to a treasure_set entry. Map entities with
+--a name that begin with one of the keys followed by a period will use the corresponding
+--treasure_set name to randomly select the treasure to be obtained.
+local entity_sets = {
+	bush = "common",
+	vase = "uncommon",
+}
+
+return {treasure_sets, entity_sets}

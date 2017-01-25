@@ -1,0 +1,16 @@
+quest{
+  solarus_version = "1.5",
+  write_dir = "cythera_tech_demo",
+  title = "Cythera Tech Demo",
+  short_description = "A technical demo showcasing some features of the game Cythera",
+  long_description = [[
+Interactive dialogs, Night/Day tim system, Scheduled NPC movements, UI controls]],
+  author = "Llamazing",
+  quest_version = "1.0",
+  release_date = "",
+  website = "",
+  normal_quest_size = "640x384",
+  min_quest_size = "640x384",
+  max_quest_size = "640x384",
+}
+

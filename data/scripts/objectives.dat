@@ -1,0 +1,40 @@
+--[[ objectives.dat		1/24/2017
+	   __   __   __   __  _____   _____________  _______
+	  / /  / /  /  | /  |/  /  | /__   /_  _/  |/ / ___/
+	 / /__/ /__/ & |/ , ,  / & | ,:',:'_/ // /|  / /, /
+	/____/____/_/|_/_/|/|_/_/|_|_____/____/_/ |_/____/
+	
+	This data file contains objectives parameters, including their description, conditions
+	to become available, and conditions to be marked complete.
+]]
+
+--// Properties for each objective; key for each objective is the id
+	--availability (string): savegame expression that must be true in order for objective to be visible
+		--if nil or false then objective is always visible
+	--requirements (string): savegame expression that must be true in order for the objective to be considered completed
+		--if nil or false then objective is complete as soon as it is visible
+	--on_complete (function): callback function that gets called when the objective is complete
+		--arg1 id (string): id key of the completed objective
+	--weight (number): sort order of the objective (lower numbers displayed first in list)
+local objectives = {
+	--[[learn_neoptolemus_name = { --this objective contains spoilers in name; do not use
+		availability = nil,
+		requirements = "met_neoptolemus",
+		on_complete = nil,
+		weight = 1,
+	},]]
+	learn_persuasion = {
+		availability = nil,
+		requirements = "skill_persuasion",
+		on_complete = nil,
+		weight = 2,
+	},
+	obtain_bottle = {
+		availability = nil,
+		requirements = "possession_bottle_1",
+		on_complete = nil,
+		weight = 3,
+	},
+}
+
+return objectives
